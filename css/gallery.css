@@ -1,0 +1,57 @@
+
+.waterfall {
+  --h1: 15vh;
+  --h2: 30vh;
+  --h3: 45vh;
+  --width: minmax(150px, 1fr);
+
+  width: 80vw;
+  margin-left:5%;
+  margin-right:6%;
+
+    
+
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--width));
+  grid-gap: 1em;
+  grid-auto-flow: row dense;
+
+  .item:nth-of-type(3n+1) {
+    grid-row: span 1;
+  }
+  .item:nth-of-type(2n+2) {
+    grid-row: span 2;
+  }
+  .item:nth-of-type(2n+3) {
+    grid-row: span 3;
+  }
+
+  .item {
+    overflow: hidden;
+    transform: rotate(0deg);
+    filter: saturate(0) contrast(10) brightness(0.2)  opacity(100)
+ ;
+    transition: transform 0.2s, border 0.1s;
+    box-sizing: border-box;
+    border: 1em solid transparent;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: rotate(0deg);
+      transition: all 0.3s;
+    }
+
+    &.inbound {
+      transform: rotate(0);
+      filter: none;
+      border-bottom: 1px solid white;
+
+      & img {
+        transform: rotate(0);
+      }
+    }
+  }
+}
